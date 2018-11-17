@@ -3,8 +3,8 @@ set -ex
 main() {
     local arch=$1
 
-    local binutils=2.31.1 \
-          gcc=8.2.0 \
+    local binutils=2.25.1 \
+          gcc=5.3.0 \
           target=$arch-unknown-freebsd10
 
     local dependencies=(
@@ -95,7 +95,7 @@ main() {
         --disable-lto \
         --disable-multilib \
         --disable-nls \
-        --enable-languages=c,c++ \
+        --enable-languages=c \
         --target=$target
     nice make -j$(nproc)
     make install
