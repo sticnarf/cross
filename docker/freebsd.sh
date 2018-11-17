@@ -4,7 +4,7 @@ main() {
     local arch=$1
 
     local binutils=2.29.1 \
-          gcc=5.5.0 \
+          gcc=4.8.5 \
           target=$arch-unknown-freebsd10
 
     local dependencies=(
@@ -53,7 +53,7 @@ main() {
             ;;
     esac
 
-    curl http://ftp.freebsd.org/pub/FreeBSD/releases/$bsd_arch/10.4-RELEASE/base.txz | \
+    curl http://ftp.freebsd.org/pub/FreeBSD/releases/$bsd_arch/10.2-RELEASE/base.txz | \
         tar -C $td/freebsd -xJ ./usr/include ./usr/lib ./lib
 
     cd binutils-build
