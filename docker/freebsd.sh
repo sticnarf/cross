@@ -3,8 +3,8 @@ set -ex
 main() {
     local arch=$1
 
-    local binutils=2.25.1 \
-          gcc=5.3.0 \
+    local binutils=2.29.1 \
+          gcc=5.5.0 \
           target=$arch-unknown-freebsd10
 
     local dependencies=(
