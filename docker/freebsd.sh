@@ -4,8 +4,8 @@ main() {
     local arch=$1
 
     local binutils=2.31.1 \
-          gcc=6.5.0 \
-          target=$arch-unknown-freebsd11
+          gcc=5.3.0 \
+          target=$arch-unknown-freebsd10
 
     local dependencies=(
         bzip2
@@ -53,7 +53,7 @@ main() {
             ;;
     esac
 
-    curl http://ftp.freebsd.org/pub/FreeBSD/releases/$bsd_arch/11.2-RELEASE/base.txz | \
+    curl http://ftp.freebsd.org/pub/FreeBSD/releases/$bsd_arch/10.2-RELEASE/base.txz | \
         tar -C $td/freebsd -xJ ./usr/include ./usr/lib ./lib
 
     cd binutils-build
@@ -90,7 +90,6 @@ main() {
         --disable-libquadmath \
         --disable-libquadmath-support \
         --disable-libsanitizer \
-        --disable-libssp \
         --disable-libvtv \
         --disable-lto \
         --disable-multilib \
