@@ -3,8 +3,8 @@ set -ex
 main() {
     local arch=$1
 
-    local binutils=2.25.1 \
-          gcc=5.3.0 \
+    local binutils=2.31.1 \
+          gcc=8.2.0 \
           target=$arch-unknown-freebsd10
 
     local dependencies=(
@@ -30,11 +30,11 @@ main() {
 
     mkdir $td/{binutils,gcc}{,-build} $td/freebsd
 
-    curl https://ftp.gnu.org/gnu/binutils/binutils-$binutils.tar.bz2 | \
-        tar -C $td/binutils --strip-components=1 -xj
+    curl https://ftp.gnu.org/gnu/binutils/binutils-$binutils.tar.gz | \
+        tar -C $td/binutils --strip-components=1 -xz
 
-    curl https://ftp.gnu.org/gnu/gcc/gcc-$gcc/gcc-$gcc.tar.bz2 | \
-        tar -C $td/gcc --strip-components=1 -xj
+    curl https://ftp.gnu.org/gnu/gcc/gcc-$gcc/gcc-$gcc.tar.gz | \
+        tar -C $td/gcc --strip-components=1 -xz
 
     pushd $td
 
@@ -53,7 +53,7 @@ main() {
             ;;
     esac
 
-    curl http://ftp.freebsd.org/pub/FreeBSD/releases/$bsd_arch/10.2-RELEASE/base.txz | \
+    curl http://ftp.freebsd.org/pub/FreeBSD/releases/$bsd_arch/10.4-RELEASE/base.txz | \
         tar -C $td/freebsd -xJ ./usr/include ./usr/lib ./lib
 
     cd binutils-build
